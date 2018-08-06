@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src=""></script>
+</head>
+<body>
+    <div class="windowImg">
+        <div class="images" id="images">
+            <img src="http://www.wallpaper-box.com/cat/images/cat14.jpg" width="900" alt="">
+            <img src="http://www.wallpaper-box.com/cat/images/cat21.jpg" width="900" alt="">
+            <img src="http://www.wallpaper-box.com/cat/images/cat33.jpg" width="900" alt="">
+            <img src="http://www.wallpaper-box.com/cat/images/cat37.jpg" width="900" alt="">
+        </div>
+    </div>
+    <span id="buttons">
+        <span>第1张</span>
+        <span>第2张</span>
+        <span>第3张</span>
+        <span>第4张</span>
+    </span>
+</body>
+<script>
+    
+    var allButtons = $('#buttons>span')
+    
+    for(let i=0;i<allButtons.length;i++){
+        $(allButtons[i]).on('click',function(x){
+            var index = $(x.currentTarget).index()
+            var p = index * -900
+            $('#images').css({
+                transform:'translate(' + p + 'px)'
+            })
+            n = index
+            allButtons.eq(n)
+                .addClass('red')
+                .siblings('.red').removeClass('red')
+            
+        })
+    }
+
+    var n = 0
+    var size = allButtons.length 
+    allButtons.eq(n % size).trigger('click')
+
+    var timerId = setInterval(()=>{
+        n+=1
+        allButtons.eq(n % size).trigger('click')
+    },2500)
+    
+    $('.windowImg').on('mouseenter', function(){
+        window.clearInterval(timerId)
+    })
+    $('.windowImg').on('mouseleave', function(){
+        timerId = setInterval(()=>{
+        n+=1
+        allButtons.eq(n%size).trigger('click')
+    },2500)
+    })
+    </script>
+</html>
