@@ -8,27 +8,35 @@ for(let i=0;i<allButtons.length;i++){
             transfrom:'translate(' +p+ 'px)'
         })
         n=index
-        allButtons.eq(n)
-            .addClass('red')
-            .siblings('.red').removeClass('red')
+        activeButton(allButtons.eq(n))
     })
 }
 
 n = 0
 var size = allButtons.length
-allButtons.eq(n%size).trigger('click')
+playSide(n%size)
+var timerId = setTimer()
 
-var timerId = setInterval(()=>{
-    n+=1
-    allButtons.eq(n%size).trigger('click')
-},1000)
+
+function setTimer(){
+    return setInterval(()=>{
+        n+=1
+        playSide(n%size)
+    },1000)
+}
+function playSide(index){
+    allButtons.eq(index).trigger('click')
+}
+
+function activeButton($button){
+            $button
+            .addClass('red')
+            .siblings('.red').removeClass('red')
+}
 
 $('.windowImg').on('mouseenter',function(){
     window.clearInterval(timerId)
 })
 $('.windowImg').on('mouseleave',function(){
-    timerId = setInterval(()=>{
-        n += 1
-        allButtons.eq(n).trigger('click')
-    },1000)
+    timerId = setTimer()
 })
