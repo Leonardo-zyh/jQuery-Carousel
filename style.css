@@ -1,0 +1,23 @@
+*{margin: 0;padding: 0;}
+*{box-sizing: border-box}
+
+.window{
+    width: 900px;    
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+
+.images{
+    display: flex;
+    transition: all 0.5s;
+}
+.images >img{
+    width: 100%;  
+}
+.buttons,.controls{
+    text-align: center;
+}
+button,span{
+    margin: 0 10px;
+}
