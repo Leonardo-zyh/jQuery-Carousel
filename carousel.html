@@ -17,13 +17,13 @@
             <img src="http://www.wallpaper-box.com/cat/images/cat33.jpg" width="900" alt="">
             <img src="http://www.wallpaper-box.com/cat/images/cat37.jpg" width="900" alt="">
         </div>
+        <span id="buttons">
+                <span>第1张</span>
+                <span>第2张</span>
+                <span>第3张</span>
+                <span>第4张</span>
+            </span>
     </div>
-    <span id="buttons">
-        <span>第1张</span>
-        <span>第2张</span>
-        <span>第3张</span>
-        <span>第4张</span>
-    </span>
 </body>
 <script>
     
@@ -62,5 +62,17 @@
         allButtons.eq(n%size).trigger('click')
     },2500)
     })
+
+    document.addEventListener('visibilitychange',function(e){
+    if(document.hidden){
+        window.clearInterval(timerId)
+    }else{
+        timerId = setInterval(()=>{
+        n+=1
+        allButtons.eq(n%size).trigger('click')
+    },2500)
+                
+    }
+})
     </script>
 </html>

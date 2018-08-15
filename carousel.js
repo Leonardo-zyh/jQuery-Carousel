@@ -1,42 +1,47 @@
-var allButtons = $('buttons>span')
+var allButtons = $('#buttons>span')
+    
 for(let i=0;i<allButtons.length;i++){
     $(allButtons[i]).on('click',function(x){
         var index = $(x.currentTarget).index()
         var p = index * -900
-        
         $('#images').css({
-            transfrom:'translate(' +p+ 'px)'
+            transform:'translate(' + p + 'px)'
         })
-        n=index
-        activeButton(allButtons.eq(n))
+        n = index
+        allButtons.eq(n)
+            .addClass('red')
+            .siblings('.red').removeClass('red')
+        
     })
 }
 
-n = 0
-var size = allButtons.length
-playSide(n%size)
-var timerId = setTimer()
+var n = 0
+var size = allButtons.length 
+allButtons.eq(n % size).trigger('click')
 
+var timerId = setInterval(()=>{
+    n+=1
+    allButtons.eq(n % size).trigger('click')
+},2500)
 
-function setTimer(){
-    return setInterval(()=>{
-        n+=1
-        playSide(n%size)
-    },1000)
-}
-function playSide(index){
-    allButtons.eq(index).trigger('click')
-}
-
-function activeButton($button){
-            $button
-            .addClass('red')
-            .siblings('.red').removeClass('red')
-}
-
-$('.windowImg').on('mouseenter',function(){
+$('.windowImg').on('mouseenter', function(){
     window.clearInterval(timerId)
 })
-$('.windowImg').on('mouseleave',function(){
-    timerId = setTimer()
+$('.windowImg').on('mouseleave', function(){
+    timerId = setInterval(()=>{
+    n+=1
+    allButtons.eq(n%size).trigger('click')
+},2500)
+})
+
+document.addEventListener('visibilitychange',function(e){
+if(document.hidden){
+    window.clearInterval(timerId)
+}else{
+    timerId = setInterval(()=>{
+    n+=1
+    allButtons.eq(n%size).trigger('click')
+},2500)
+            
+}
 })
