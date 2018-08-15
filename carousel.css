@@ -1,3 +1,6 @@
+body{
+    background-color: #f2f2f2;
+}
 .windowImg{
     box-shadow: 0 0  5px #AAAAAA;
     border-radius: 5px;
@@ -28,4 +31,5 @@
 
 .red{
     color: red; 
+    background: rgba(0, 0, 0, 0.15);
 }
