@@ -5,6 +5,7 @@
     width: 900px;    
     margin: 20px auto;
     overflow: hidden;
+    box-shadow: 0 0 5px #AAAAAA ;
 }
 
 
@@ -17,7 +18,27 @@
 }
 .buttons,.controls{
     text-align: center;
+   
 }
-button,span{
-    margin: 0 10px;
+#previous{
+    float: left;
+    line-height: 40px;
+    padding: 5px 20px;
+}
+#next{
+   float: right;
+   line-height: 40px;
+   padding: 5px 20px;
+
+}
+.controls,.buttons{
+    background: #F4F4F4;
+}
+button{
+    font-size: 16px;
+    width: 100px;
+    height: 50px;
+    background: #F4F4F4;
+    border: 1px solid #F4F4F4;
+    
 }
