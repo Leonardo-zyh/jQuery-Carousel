@@ -1,3 +1,11 @@
+.windowImg{
+    box-shadow: 0 0  5px #AAAAAA;
+    border-radius: 5px;
+    width: 900px;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: 150px;
+}
 .images{
     display: flex;
     align-items: flex-start;
@@ -6,19 +14,19 @@
 .images>img{
     vertical-align: top;
 }
-.windowImg{
-    width: 900px;
-    overflow: hidden;
-    margin: 0 auto;
-}
+
 #buttons{
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #F4F4F4;
 }
 #buttons  span{
-    margin: 0 20px;
+    padding: 15px 30px;
+    box-shadow: 0 0 1px #AAAAAA;
+    border-radius: 1px;
 }
+
 .red{
     color: red; 
 }
